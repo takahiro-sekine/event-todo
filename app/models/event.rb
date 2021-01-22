@@ -1,8 +1,10 @@
 class Event < ApplicationRecord
-  validates :title, length: { maximum: 50}, presence:true
-  validates :body, length:{ maximum: 2000}, presence:true
-  validates :start_at,:end_at, presence:true
-  validates :start_at_should_be_end_at
+  with_options presence: true do
+    validates :title
+    validates :body
+    validates :start_at,:end_at
+  end
+  validate :start_at_should_be_end_at
 
   private
 

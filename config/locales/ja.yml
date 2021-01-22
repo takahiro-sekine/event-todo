@@ -1,0 +1,15 @@
+ja:
+  activerecord:
+    formats:
+      default: "%Y/%m/%d"
+      long: "%Y年%m月%d日(%a)"
+      short: "%m/%d"
+    models:
+      event: イベント
+    attributes:
+      event:
+        title: タイトル
+        body: 内容
+        start_at: 開始時間
+        end_at: 終了時間
+
