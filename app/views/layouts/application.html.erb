@@ -19,14 +19,14 @@
               <%=link_to "イベントを作る", new_event_path, class: "nav-link" %>
             </li>
             <li class="nav-item">
-              <%=link_to "ログアウト", class: "nav-link", method: :delete %>
+              <%=link_to "ログアウト", destroy_user_session_path, class: "nav-link", method: :delete %>
             </li>
           <%# <%elsif%> 
             <li class="nav-item">
-              <%=link_to "ログイン", class: "nav-link", method: :post%>
+              <%=link_to "ログイン", new_user_session_path, class: "nav-link", method: :post%>
             </li>
             <li class="nav-item">
-              <%=link_to "新規登録", class: "nav-link" %>
+              <%=link_to "新規登録", new_user_registration_path, class: "nav-link" %>
             </li>
           <%# <%end%> 
       </div>
