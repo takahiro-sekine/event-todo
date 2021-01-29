@@ -1,6 +1,4 @@
 <h1>イベント一覧</h1>
   <div class="list-group">
-    <% @events.each do |event| %>
-       <%= render partial: "shared/event", locals: { event: event } %>
-    <% end %>
+      <%= render partial: "shared/event", collection: @events %>
   </div>

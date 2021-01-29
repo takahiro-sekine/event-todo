@@ -1,19 +1,21 @@
 class Event < ApplicationRecord
 
+  belongs_to :user
+  
   with_options presence: true do
     validates :title
     validates :body
-    validates :start_at,:end_at
+    validates :limit_date
   end
-  validate :start_at_should_be_end_at
+  validate :limit_now
 
   private
 
-  def start_at_should_be_end_at
-    return unless start_at && end_at
+  def limit_now
+    return unless limit_date
 
-    if start_at >= end_at
-      error.add(:start_at,"は終了時間より前に設定してください")
+    if now >= limit_date
+      error.add(:limit_date,"は今より後に設定してください")
     end
   end
 

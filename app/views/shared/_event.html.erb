@@ -1,17 +1,8 @@
-<%= link_to(event, class:"list-group-item list-group-item-action") do %>
-  <h5 class="list-group-item-heading">
-    <%= event.name %>
-  </h5>
-      <td>
-        <%
-          today = Date.today
-          diff  = t.limit_date - today
-            %>
-        <% if    diff.to_i <= 0 %>
-          <b class="red-text text-lighten-2"><%= t.limit_date %></b>
-        <% elsif diff.to_i <= 3 %>
-          <b class="amber-text"><%= t.limit_date %></b>
-        <% else %>
-          <b><%= t.limit_date %></b>
-        <% end %>
-      </td>
+  <div class="event_title">
+    <%= link_to " #{event.title} ", event_path(event.id), class: :card__title%>
+    <p class="event__body">
+      <%= link_to "#{event.body}", event_path(event.id), class: :card_body %>
+    </p>
+    <%= link_to "by #{event.user.name}", "/users/#{event.user.id}", class: :card__user %>
+  </div>
+</div>

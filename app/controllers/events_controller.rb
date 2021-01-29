@@ -2,7 +2,7 @@ class EventsController < ApplicationController
   # before_action :authenticate_user!, except: [:index, :show]
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   def index
-    @events = Event.all.order(id: 'DESC')
+    @events = Event.all
   end
 
   def new
@@ -10,7 +10,7 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = Event.new(events_params)
+    @event = Event.new(event_params)
     if @event.save
       redirect_to root_path
     else
@@ -34,7 +34,7 @@ class EventsController < ApplicationController
   end
 
   def destroy
-    if current_user.id == @evednt.user_id
+    if current_user.id == @event.user_id
       @event.destroy
       redirect_to root_path
     else
@@ -44,8 +44,8 @@ class EventsController < ApplicationController
 
   private
 
-  def items_params
-    params.require(:event).permit(:title, :start_at, :end_at, :body, :image).merge(user_id: current_user.id)
+  def event_params
+    params.require(:event).permit(:title, :limit_date, :body).merge(user_id: current_user.id)
   end
 
   def set_item
