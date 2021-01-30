@@ -1,0 +1,8 @@
+  <div class="event_title">
+    <%= link_to " #{event.title} ", event_path(event.id), class: :card__title%>
+    <p class="event__body">
+      <%= link_to "#{event.body}", event_path(event.id), class: :card_body %>
+    </p>
+    <%= link_to "by #{event.user.name}", "/users/#{event.user.id}", class: :card__user %>
+  </div>
+</div>

@@ -14,9 +14,8 @@ ActiveRecord::Schema.define(version: 2021_01_14_013957) do
 
   create_table "events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.text "title", null: false
-    t.datetime "start_at", null: false
-    t.datetime "end_at", null: false
-    t.string "body", limit: 255, null: false
+    t.date "limit_date"
+    t.string "body", null: false
     t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

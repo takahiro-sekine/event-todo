@@ -1,13 +1,14 @@
 <h1>イベント一覧</h1>
-  <ul class="list-group">
-    <% @events.each.do |event| %>
-      <%= link_to(event, class:"list-group-item list-group-item-action") do %>
-      <h5 class="list-group-item-heading">
-        <%= event.name %>
-      </h5>
-      <p class="mb-1">
-        <%= "#{|(event.start_at,format: :long)} - #{|(event.end_at,format: :long)}" %>
-      </p>
-
-      <%= end %>
-  </ul>
+  <div class="inner">
+    <% if user_signed_in? %>
+      <%# ログインしているときは以下を表示する %>
+      <div class="greeting"> 
+         こんにちは、
+         <%= link_to "#{current_user.name}さん", "/users/#{current_user.id}", class: :greeting__link%>
+      </div> 
+      <%# // ログインしているときは上記を表示する %>
+    <% end %>   
+    <div class="list-group">
+        <%= render partial: "shared/event", collection: @events %>
+    </div>
+  </div>
