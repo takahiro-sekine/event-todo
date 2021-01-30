@@ -10,11 +10,11 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = Event.new(event_params)
+    @event = Event.create(event_params)
     if @event.save
       redirect_to root_path
     else
-      render 'new'
+      render :new
     end
   end
 
@@ -45,7 +45,7 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:title, :limit_date, :body).merge(user_id: current_user.id)
+    params.require(:event).permit(:title, :limit_date, :limit_time, :body).merge(user_id: current_user.id)
   end
 
   def set_item

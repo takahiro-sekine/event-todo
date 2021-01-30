@@ -14,19 +14,7 @@
   <h5 class="card-header">期限</h5>
   <div class="card-body">
     <p class="card-text">
-      <td>
-        <%
-        today = Date.today
-        diff  = t.limit_date - today
-        %>
-        <% if    diff.to_i <= 0 %>
-        <b class="red-text text-lighten-2"><%= t.limit_date %></b>
-        <% elsif diff.to_i <= 3 %>
-        <b class="amber-text"><%= t.limit_date %></b>
-        <% else %>
-        <b><%= t.limit_date %></b>
-        <% end %>
-      </td>
+      <%=@event.limit_date%>
     </p>
   </div>
 </div>
@@ -48,3 +36,9 @@
     </p>
   </div>
 </div>
+<% if user_signed_in? && current_user.id == @event.user_id %> 
+  <div class="event__manage">
+    <%= link_to "編集する", edit_event_path(@event.id), method: :get, class: :event__btn %>
+    <%= link_to "削除する", event_path(@event.id), method: :delete, class: :event__btn %>
+  </div>      
+<% end %> 

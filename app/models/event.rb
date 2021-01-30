@@ -14,7 +14,7 @@ class Event < ApplicationRecord
   def limit_now
     return unless limit_date
 
-    if now >= limit_date
+    if Time.zone.now >= limit_date 
       error.add(:limit_date,"は今より後に設定してください")
     end
   end
