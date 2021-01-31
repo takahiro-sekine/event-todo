@@ -1,7 +1,7 @@
 class Event < ApplicationRecord
-
   belongs_to :user
-  
+  has_many :comments, dependent: :destroy
+
   with_options presence: true do
     validates :title
     validates :body
@@ -11,12 +11,9 @@ class Event < ApplicationRecord
 
   private
 
-  def limit_now
-    return unless limit_date
+  # def limit_now
+    # return unless limit_date
 
-    if Time.zone.now >= limit_date 
-      error.add(:limit_date,"は今より後に設定してください")
-    end
-  end
-
+    # error.add(:limit_date 'は今より後に設定してください') if Time.zone.now >= limit_date
+  # end
 end

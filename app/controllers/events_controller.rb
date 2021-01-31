@@ -19,6 +19,8 @@ class EventsController < ApplicationController
   end
 
   def show
+    @comment = Comment.new
+    @comments = @event.comments.includes(:user)
   end
 
   def edit
@@ -52,4 +54,3 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
   end
 end
-
