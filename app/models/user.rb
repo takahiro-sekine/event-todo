@@ -13,4 +13,5 @@ class User < ApplicationRecord
   end
   has_many :events, dependent: :destroy
   has_many :tasks, dependent: :destroy
+  has_many :comments, dependent: :destroy
 end
