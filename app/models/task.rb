@@ -4,5 +4,4 @@ class Task < ApplicationRecord
     validates :task_title
     validates :task_body
   end
-
 end
