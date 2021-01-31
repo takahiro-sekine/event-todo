@@ -1,0 +1,11 @@
+<table>
+  <tr>
+    <th>タイトル</th>
+    <td><%= @task.task_title %></td></tr>
+  <tr>
+    <th>内容</th>
+    <td><%= @task.task_body %></td>
+  </tr>
+  
+</table>
+<p><%= link_to '一覧に戻る', tasks_url %></p>
