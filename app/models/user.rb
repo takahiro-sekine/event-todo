@@ -12,5 +12,6 @@ class User < ApplicationRecord
           validates :email
         end
         has_many :events, dependent: :destroy
+        has_many :tasks, dependent: :destroy
 
 end
