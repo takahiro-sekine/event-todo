@@ -7,7 +7,15 @@ class Event < ApplicationRecord
     validates :body
     validates :limit_date
   end
-  validate :limit_now
+  # validate :limit_now
+
+  def self.search(search)
+    if search != ""
+      Event.where('title LIKE(?)', "%#{search}%")
+    else
+      Event.all
+    end
+  end
 
   private
 
