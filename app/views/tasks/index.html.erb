@@ -1,7 +1,14 @@
   <% @tasks.each do |task| %>
   <tr>
     <td><%= task.task_title %></td>
-    <td><%= task.task_body %></td>
+  <div>
+    <select name="state">
+      <% @status.each_with_index do |s,i| %>
+      <option value="<%= s %>"><%= s %></option>
+      <% end %>
+    </select>
+    <label>Task State</label>
+  </div>
     <td><%= link_to 'Show', task_path(task) %></td>
     <td><%= link_to 'Edit', edit_task_path(task) %></td>
     <td><%= link_to 'Delete', task_path(task), method: :delete %></td>

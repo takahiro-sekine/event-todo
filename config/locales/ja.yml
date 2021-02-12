@@ -10,6 +10,5 @@ ja:
       event:
         title: タイトル
         body: 内容
-        start_at: 開始時間
-        end_at: 終了時間
+        limit_date: 日時
 
