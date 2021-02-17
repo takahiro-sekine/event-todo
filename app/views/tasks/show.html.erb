@@ -1,3 +1,4 @@
+<% if user_signed_in? && current_user.id == @event.user_id %> 
 <table>
   <tr>
     <th>内容</th>
@@ -12,4 +13,5 @@
     <label>Task State</label>
   </div>
 </table>
+<%end%>
 <p><%= link_to '一覧に戻る', tasks_url %></p>
