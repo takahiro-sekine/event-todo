@@ -1,10 +1,8 @@
 class TasksController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   def index
-    @tasks = current_user.tasks
-  end
-
-  def show
+    @tasks = Task.all
+    @status = ['todo', 'doing', 'done'] 
   end
 
   def new
@@ -12,35 +10,47 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = current_user.tasks.new task_params
-    @task.save!
-    redirect_to @task
+    @task = Task.create(task_params)
+    if @task.save
+      redirect_to root_path
+    else
+      render :new
+    end
+  end
+
+  def show
+    @status = ['todo', 'doing', 'done'] 
   end
 
   def edit
+    redirect_to action: :index unless current_user.id == @task.user_id
   end
 
   def update
-    @task.update(task_params)
-    redirect_to @task
+    if @event.update(task_params)
+      redirect_to root_path
+    else
+      render :edit
+    end
   end
 
   def destroy
-    @task.destroy
-    redirect_to tasks_url
+    if current_user.id == @task.user_id
+      @task.destroy
+      redirect_to root_path
+    else
+      redirect_to action: :index
+    end
   end
 
   private
 
-  def target_task(task_id)
-    current_user.tasks.where(id: task_id).take
-  end
 
   def task_params
-    params.require(:task).permit(:task_title, :task_body)
+    params.require(:task).permit(:task_title, :complete).merge(user_id: current_user.id)
   end
 
   def set_item
-    @task = target_task params[:id]
+    @task = Task.find(params[:id])
   end
 end

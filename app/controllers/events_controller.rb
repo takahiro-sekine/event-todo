@@ -44,6 +44,10 @@ class EventsController < ApplicationController
     end
   end
 
+  def search
+    @events = Event.search(params[:keyword])
+  end
+
   private
 
   def event_params
