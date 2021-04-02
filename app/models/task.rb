@@ -3,12 +3,13 @@ class Task < ApplicationRecord
   with_options presence: true do
     validates :task_title
     validates :complete
-
   end
-  # validates :limit_now
+  validate :limit_task
 
-  # def limit_now
-    # return if limit_date.blank?
-    # errors.add(:limit_date, 'は今より後に設定してください') if Time.now > limit_date
-  # end
+  private
+
+  def limit_task
+    return if complete.blank?
+    errors.add(:complete, 'は今より後に設定してください') if Time.now > complete
+  end
 end
