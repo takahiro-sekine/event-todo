@@ -10,6 +10,7 @@ class Task < ApplicationRecord
 
   def limit_task
     return if complete.blank?
+
     errors.add(:complete, 'は今より後に設定してください') if Time.now > complete
   end
 end
