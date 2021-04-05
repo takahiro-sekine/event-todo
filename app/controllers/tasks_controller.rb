@@ -2,7 +2,7 @@ class TasksController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   def index
     @tasks = Task.all
-    @status = ['todo', 'doing', 'done'] 
+    @status = %w[todo doing done]
   end
 
   def new
@@ -19,7 +19,7 @@ class TasksController < ApplicationController
   end
 
   def show
-    @status = ['todo', 'doing', 'done'] 
+    @status = %w[todo doing done]
   end
 
   def edit
@@ -44,7 +44,6 @@ class TasksController < ApplicationController
   end
 
   private
-
 
   def task_params
     params.require(:task).permit(:task_title, :complete).merge(user_id: current_user.id)

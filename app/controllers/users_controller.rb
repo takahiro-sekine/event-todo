@@ -6,6 +6,5 @@ class UsersController < ApplicationController
     @nickname = user.nickname
     @birthday = user.birthday
     @position = user.position
-    
   end
 end
