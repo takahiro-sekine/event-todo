@@ -1,6 +1,5 @@
 <div class="form-task">
   <%= form_for(@task) do |f| %>
-   <%= render 'shared/error_message', model: f.object %>
   <div class="form-group">
     <%= f.label :task_title, "表題"%><br />
     <%= f.text_field :task_title%>
